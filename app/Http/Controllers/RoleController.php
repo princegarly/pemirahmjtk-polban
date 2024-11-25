@@ -108,7 +108,7 @@ class RoleController extends Controller
 
     public function data()
     {
-        $data = Role::latest()->get();
+        $data = Role::withCount(['users', 'permissions'])->get();
 
         return DataTables::of($data)
                         ->addIndexColumn()

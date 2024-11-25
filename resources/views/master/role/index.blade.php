@@ -38,6 +38,8 @@
                                     <th class="text-center">{{ __('No') }}</th>
                                     <th class="text-center">{{ __('Role Name') }}</th>
                                     <th class="text-center">{{ __('Guard Name') }}</th>
+                                    <th class="text-center">{{ __('Total User') }}</th>
+                                    <th class="text-center">{{ __('Total Permission') }}</th>
                                     <th class="text-center">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
@@ -68,7 +70,9 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                 }, width: '5%', class: 'text-center' },
                 { data: 'name', name: 'name' },
-                { data: 'guard_name', name: 'guard_name', class: 'text-center' },
+                { data: 'guard_name', name: 'guard_name', class: 'text-center', width: '10%' },
+                { data: 'users_count', name: 'users_count', class: 'text-center', width: '10%' },
+                { data: 'permissions_count', name: 'permissions_count', class: 'text-center', width: '10%' },
                 { data: 'action', name: 'action', orderable: true, searchable: true, width: '5%' }
             ]
         })
