@@ -80,7 +80,7 @@
                             <div class="col-sm-9">
                                 <select id="role" class="form-control select2 @error('role') is-invalid @enderror" name="role[]" multiple data-placeholder=" Select Roles">
                                     @foreach($roles as $rrole)
-                                        <option value="{{ $rrole->name }}">{{ $rrole->name }}</option>
+                                        <option value="{{ $rrole->name }}">{{ ucwords(str_replace("-", " ", $rrole->name)) }}</option>
                                     @endforeach
                                 </select>
 
