@@ -27,6 +27,12 @@
                     <i class="fas fa-th-large"></i>
                     <span>{{ __('Manage Account') }}</span>
                 </a>
+
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::routeIs('permission.index') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('permission.index') }}">{{ __('Permission') }}</a>
+                    </li>
+                </ul>
                     
                 <ul class="dropdown-menu">
                     <li class="{{ Request::routeIs('role.index') ? 'active' : '' }}">
