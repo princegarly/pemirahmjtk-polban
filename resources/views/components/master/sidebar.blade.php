@@ -11,7 +11,7 @@
         </div>
 
         <ul class="sidebar-menu">
-            <li class="menu-header">{{ __('Master') }}</li>
+            <li class="menu-header">{{ __('Main') }}</li>
             
             <li class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('dashboard') }}">

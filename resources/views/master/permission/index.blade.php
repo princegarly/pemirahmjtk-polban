@@ -6,7 +6,7 @@
 
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
-        <li class="breadcrumb-item">{{ __('Master') }}</li>
+        <li class="breadcrumb-item">{{ __('Settings') }}</li>
         <li class="breadcrumb-item">{{ __('Manage Account') }}</li>
         <li class="breadcrumb-item">{{ __('Permission') }}</li>
         <li class="breadcrumb-item">
