@@ -24,12 +24,17 @@
                         <h4><b>{{ $title }}</b></h4>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#importUsersModal">
-                            <span class="fas fa-file-import"></span> {{ __('Import') }}
-                        </button>
-                        <a href="{{ route('user.create') }}" class="btn btn-primary float-right mr-2">
-                            <span class="fas fa-plus"></span> {{ __('Tambah') }}
-                        </a>
+                        @can(['user-import'])
+                            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#importUsersModal">
+                                <span class="fas fa-file-import"></span> {{ __('Import') }}
+                            </button>
+                        @endcan
+
+                        @can(['user-create'])
+                            <a href="{{ route('user.create') }}" class="btn btn-primary float-right mr-2">
+                                <span class="fas fa-plus"></span> {{ __('Tambah') }}
+                            </a>
+                        @endcan
                     </div>
                 </div>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PollingBoothController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\UserController;
@@ -103,6 +104,10 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], f
     Route::name('polling-booth.')->prefix('polling-booth')->group(function () {
         Route::get('/', [PollingBoothController::class, 'index'])->name('index');
         Route::delete('/{id}/edit', [PollingBoothController::class, 'edit'])->name('edit');
+    });
+
+    Route::name('result.')->prefix('result')->group(function () {
+        Route::get('/', [ResultController::class, 'index'])->name('index');
     });
 });
 

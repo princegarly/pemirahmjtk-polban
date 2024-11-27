@@ -25,9 +25,11 @@
                         </h4>
                     </div>
                     <div class="col">
-                        <a href="{{ route('candidate.create') }}" class="btn btn-primary float-right">
-                            <span class="fas fa-plus"></span> {{ __('Tambah') }}
-                        </a>
+                        @can('candidate-create')
+                            <a href="{{ route('candidate.create') }}" class="btn btn-primary float-right">
+                                <span class="fas fa-plus"></span> {{ __('Tambah') }}
+                            </a>
+                        @endcan
                     </div>
                 </div>
 

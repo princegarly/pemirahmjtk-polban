@@ -25,7 +25,11 @@
                         </h4>
                     </div>
                     <div class="col">
-                        <a href="{{ route('study-program.create') }}" class="btn btn-primary float-right"><span class="fas fa-plus"></span> {{ __('Tambah') }}</a>
+                        @can(['study-program-edit'])
+                            <a href="{{ route('study-program.create') }}" class="btn btn-primary float-right">
+                                <span class="fas fa-plus"></span> {{ __('Tambah') }}
+                            </a>
+                        @endcan
                     </div>
                 </div>
 

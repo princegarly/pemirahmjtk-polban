@@ -1,9 +1,15 @@
-<div class="d-flex">
-    <a href="{{ route('grade.edit', Crypt::encrypt($id)) }}" class="ml-2 btn btn-warning">
-        <span class="fas fa-edit"></span>
-    </a>
+@canany(['grade-edit', 'grade-delete'])
+    <div class="d-flex">
+        @can('grade-edit')
+            <a href="{{ route('grade.edit', Crypt::encrypt($id)) }}" class="ml-2 btn btn-warning">
+                <span class="fas fa-edit"></span>
+            </a>
+        @endcan
 
-    <a href="{{ route('grade.destroy', Crypt::encrypt($id)) }}" class="ml-2 btn btn-danger" data-confirm-delete="true">
-        <span class="fas fa-trash"></span>
-    </a>
-</div>
+        @can('grade-delete')
+            <a href="{{ route('grade.destroy', Crypt::encrypt($id)) }}" class="ml-2 btn btn-danger" data-confirm-delete="true">
+                <span class="fas fa-trash"></span>
+            </a>
+        @endcan
+    </div>
+@endcanany

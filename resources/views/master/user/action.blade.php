@@ -1,9 +1,15 @@
-<div class="d-flex">
-    <a href="{{ route('user.edit', Crypt::encrypt($id)) }}" class="ml-2 btn btn-warning">
-        <span class="fas fa-edit"></span>
-    </a>
+@canany(['role-edit', 'role-delete'])
+    <div class="d-flex">
+        @canany(['user-edit'])
+            <a href="{{ route('user.edit', Crypt::encrypt($id)) }}" class="ml-2 btn btn-warning">
+                <span class="fas fa-edit"></span>
+            </a>
+        @endcan
 
-    <a href="{{ route('user.destroy', Crypt::encrypt($id)) }}" class="ml-2 btn btn-danger" data-confirm-delete="true">
-        <span class="fas fa-trash"></span>
-    </a>
-</div>
+        @canany(['user-delete'])
+            <a href="{{ route('user.destroy', Crypt::encrypt($id)) }}" class="ml-2 btn btn-danger" data-confirm-delete="true">
+                <span class="fas fa-trash"></span>
+            </a>
+        @endcan
+    </div>
+@endcanany
