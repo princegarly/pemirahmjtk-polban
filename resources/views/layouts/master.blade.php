@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/stisla-2.2.0/dist/assets/modules/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/stisla-2.2.0/dist/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/stisla-2.2.0/dist/assets/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/dropify/dist/css/dropify.css') }}">
 </head>
 <body>
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
@@ -61,6 +62,14 @@
     <script src="{{ asset('vendor/stisla-2.2.0/dist/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('vendor/stisla-2.2.0/dist/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('vendor/stisla-2.2.0/dist/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('vendor/dropify/dist/js/dropify.js' )}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            moment.locale('id')
+            $('.dropify').dropify();
+        });
+    </script>
 
     @yield('modal')
 
