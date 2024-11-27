@@ -29,6 +29,13 @@
                 </a>
             </li>
 
+            <li class="{{ Request::routeIs('grade.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('grade.index') }}">
+                    <i class="fas fa-fire"></i>
+                    <span>{{ __('Kelas') }}</span>
+                </a>
+            </li>
+
             <li class="menu-header">{{ __('Settings') }}</li>
 
             <li class="dropdown">

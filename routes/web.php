@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -63,6 +64,16 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], f
         Route::put('/update/{id}', [StudyProgramController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [StudyProgramController::class, 'destroy'])->name('destroy');
         Route::get('/data', [StudyProgramController::class, 'data'])->name('data');
+    });
+
+    Route::name('grade.')->prefix('grade')->group(function () {
+        Route::get('/', [GradeController::class, 'index'])->name('index');
+        Route::get('/create', [GradeController::class, 'create'])->name('create');
+        Route::post('/store', [GradeController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [GradeController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [GradeController::class, 'update'])->name('update');
+        Route::delete('/{id}/destroy', [GradeController::class, 'destroy'])->name('destroy');
+        Route::get('/data', [GradeController::class, 'data'])->name('data');
     });
 });
 
