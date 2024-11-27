@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ElectionStatusController;
 use App\Http\Controllers\GradeController;
@@ -86,6 +87,16 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], f
     Route::name('election-status.notyet.')->prefix('election-status.notyet')->group(function () {
         Route::get('/', [ElectionStatusController::class, 'notyet'])->name('index');
         Route::get('/data', [ElectionStatusController::class, 'notyetData'])->name('data');
+    });
+
+    Route::name('candidate.')->prefix('candidate')->group(function () {
+        Route::get('/', [CandidateController::class, 'index'])->name('index');
+        Route::get('/create', [CandidateController::class, 'create'])->name('create');
+        Route::post('/store', [CandidateController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [CandidateController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [CandidateController::class, 'update'])->name('update');
+        Route::delete('/{id}/destroy', [CandidateController::class, 'destroy'])->name('destroy');
+        Route::get('/data', [CandidateController::class, 'data'])->name('data');
     });
 });
 

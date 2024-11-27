@@ -36,6 +36,13 @@
                 </a>
             </li>
 
+            <li class="{{ Request::routeIs('candidate.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('candidate.index') }}">
+                    <i class="fas fa-fire"></i>
+                    <span>{{ __('Kandidat') }}</span>
+                </a>
+            </li>
+
             <li class="menu-header">{{ __('Status Pemilihan') }}</li>
             
             <li class="{{ Request::routeIs('election-status.already.index') ? 'active' : '' }}">
