@@ -20,6 +20,15 @@
                 </a>
             </li>
 
+            <li class="menu-header">{{ __('Manajemen Data') }}</li>
+            
+            <li class="{{ Request::routeIs('study-program.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('study-program.index') }}">
+                    <i class="fas fa-fire"></i>
+                    <span>{{ __('Program Studi') }}</span>
+                </a>
+            </li>
+
             <li class="menu-header">{{ __('Settings') }}</li>
 
             <li class="dropdown">
