@@ -36,6 +36,22 @@
                 </a>
             </li>
 
+            <li class="menu-header">{{ __('Status Pemilihan') }}</li>
+            
+            <li class="{{ Request::routeIs('election-status.already.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('election-status.already.index') }}">
+                    <i class="fas fa-fire"></i>
+                    <span>{{ __('Sudah Memilih') }}</span>
+                </a>
+            </li>
+
+            <li class="{{ Request::routeIs('election-status.notyet.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('election-status.notyet.index') }}">
+                    <i class="fas fa-fire"></i>
+                    <span>{{ __('Belum Memilih') }}</span>
+                </a>
+            </li>
+
             <li class="menu-header">{{ __('Pengaturan') }}</li>
 
             <li class="dropdown">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ElectionStatusController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
@@ -74,6 +75,16 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], f
         Route::put('/update/{id}', [GradeController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [GradeController::class, 'destroy'])->name('destroy');
         Route::get('/data', [GradeController::class, 'data'])->name('data');
+    });
+
+    Route::name('election-status.already.')->prefix('election-status.already')->group(function () {
+        Route::get('/', [ElectionStatusController::class, 'already'])->name('index');
+        Route::get('/data', [ElectionStatusController::class, 'alreadyData'])->name('data');
+    });
+
+    Route::name('election-status.notyet.')->prefix('election-status.notyet')->group(function () {
+        Route::get('/', [ElectionStatusController::class, 'notyet'])->name('index');
+        Route::get('/data', [ElectionStatusController::class, 'notyetData'])->name('data');
     });
 });
 
