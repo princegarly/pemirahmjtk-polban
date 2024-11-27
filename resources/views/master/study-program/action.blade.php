@@ -1,6 +1,6 @@
-@canany(['study-program-edit', 'study-program-delete'])
+@canany(['study-program-update', 'study-program-delete'])
     <div class="d-flex">
-        @can('study-program-edit')
+        @can('study-program-update')
             <a href="{{ route('study-program.edit', Crypt::encrypt($id)) }}" class="ml-2 btn btn-warning">
                 <span class="fas fa-edit"></span>
             </a>
