@@ -36,11 +36,11 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">{{ __('No') }}</th>
+                                    <th class="text-center">{{ __('NIM') }}</th>
                                     <th class="text-center">{{ __('Nama Lengkap') }}</th>
-                                    <th class="text-center">{{ __('Program Studi') }}</th>
                                     <th class="text-center">{{ __('Kelas') }}</th>
+                                    <th class="text-center">{{ __('Program Studi') }}</th>
                                     <th class="text-center">{{ __('Email') }}</th>
-                                    <th class="text-center">{{ __('Jenis Kelamin') }}</th>
                                     <th class="text-center">{{ __('Peran') }}</th>
                                     <th class="text-center">{{ __('Aksi') }}</th>
                                 </tr>
@@ -71,11 +71,11 @@
                 { data: 'no', name: 'no', render: function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
                 }, width: '5%', class: 'text-center' },
+                { data: 'nim', name: 'nim', class: 'text-center' },
                 { data: 'name', name: 'name' },
                 { data: 'grade_name', name: 'grade_name', class: 'text-center' },
                 { data: 'study_program_name', name: 'study_program_name', class: 'text-center' },
                 { data: 'email', name: 'email', class: 'text-center' },
-                { data: 'gender', name: 'gender', class: 'text-center' },
                 { data: 'roles', name: 'roles', class: 'text-center' },
                 { data: 'action', name: 'action', orderable: true, searchable: true, width: '5%' }
             ]
