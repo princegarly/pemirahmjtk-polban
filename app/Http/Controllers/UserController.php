@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ImportUsers;
 use App\Models\Grade;
 use App\Models\Role;
 use App\Models\StudyProgram;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel as FacadesExcel;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
@@ -159,5 +161,15 @@ class UserController extends Controller
                         ->addColumn('action', 'master.user.action')
                         ->rawColumns(['action'])
                         ->make(true);
+    }
+
+    public function import(Request $Request){
+        $Message = ['file.mimes' => 'Format File yang boleh diupload adalah .xls, .xlsx, atau .csv'];
+        $Request->validate(['file' => 'file|mimes:xls,xlsx,csv'], $Message);
+
+        FacadesExcel::import(new ImportUsers, $Request->file('file')->store('temp'));
+
+        Alert::success('Selamat', 'Anda telah berhasil impor data');
+        return redirect()->route('user.index');
     }
 }

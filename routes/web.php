@@ -55,6 +55,7 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], f
         Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [UserController::class, 'destroy'])->name('destroy');
         Route::get('/data', [UserController::class, 'data'])->name('data');
+        Route::post('/import', [UserController::class, 'import'])->name('import');
     });
 
     Route::name('study-program.')->prefix('study-program')->group(function () {
