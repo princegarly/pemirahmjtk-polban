@@ -26,6 +26,7 @@
                 
                 <form action="{{ route('study-program.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method("POST")
 
                     <div class="card-body">
                         <div class="form-group row">
@@ -46,3 +47,11 @@
         </div>
     </div>
 @endsection
+
+@section('modal')
+    
+@endsection
+
+@push('scripts')
+    
+@endpush

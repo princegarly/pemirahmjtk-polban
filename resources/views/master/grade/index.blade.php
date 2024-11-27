@@ -52,6 +52,10 @@
     </div>
 @endsection
 
+@section('modal')
+    
+@endsection
+
 @push('scripts')
     <script>
         var datatable = $('#crudGrade').DataTable({

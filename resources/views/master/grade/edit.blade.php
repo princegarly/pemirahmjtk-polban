@@ -45,13 +45,17 @@
 
                     <div class="card-footer text-right">
                         <a href="{{ route('grade.index') }}" class="btn btn-warning">{{ __('Kembali') }}</a>
-                        <button type="reset" class="btn btn-danger">{{ __('Reset') }}</button>
+                        <button type="reset" class="btn btn-danger">{{ __('Mengatur Ulang') }}</button>
                         <button type="submit" class="btn btn-primary">{{ __('Simpan Perubahan') }}</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+@endsection
+
+@section('modal')
+    
 @endsection
 
 @push('scripts')

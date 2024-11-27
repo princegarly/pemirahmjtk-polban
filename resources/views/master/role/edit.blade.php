@@ -6,9 +6,9 @@
 
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
-        <li class="breadcrumb-item">{{ __('Settings') }}</li>
-        <li class="breadcrumb-item">{{ __('Manage Account') }}</li>
-        <li class="breadcrumb-item">{{ __('Role') }}</li>
+        <li class="breadcrumb-item">{{ __('Pengaturan') }}</li>
+        <li class="breadcrumb-item">{{ __('Kelola Akun') }}</li>
+        <li class="breadcrumb-item">{{ __('Peran') }}</li>
         <li class="breadcrumb-item">
             <a href="{{ route('role.edit', Crypt::encrypt($data->id)) }}">{{ __('Edit') }}</a>
         </li>
@@ -31,9 +31,9 @@
 
                     <div class="card-body">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">{{ __('Role Name*') }}</label>
+                            <label class="col-sm-3 col-form-label">{{ __('Nama Peran*') }}</label>
                             <div class="col-sm-9">
-                                <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?? $data->name }}" placeholder="Enter Role Name">
+                                <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?? ucwords(str_replace("-", " ", $data->name)) }}" placeholder="Masukkan Nama Peran">
 
                                 @error('name')
                                     <div class="invalid-feedback">
@@ -45,14 +45,18 @@
                     </div>
 
                     <div class="card-footer text-right">
-                        <a href="{{ route('role.index') }}" class="btn btn-warning">{{ __('Back') }}</a>
-                        <button type="reset" class="btn btn-danger">{{ __('Reset') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ __('Save Change') }}</button>
+                        <a href="{{ route('role.index') }}" class="btn btn-warning">{{ __('Kembali') }}</a>
+                        <button type="reset" class="btn btn-danger">{{ __('Mengatur Ulang') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Simpan Perubahan') }}</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+@endsection
+
+@section('modal')
+    
 @endsection
 
 @push('scripts')

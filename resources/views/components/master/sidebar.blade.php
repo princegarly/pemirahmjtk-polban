@@ -36,29 +36,29 @@
                 </a>
             </li>
 
-            <li class="menu-header">{{ __('Settings') }}</li>
+            <li class="menu-header">{{ __('Pengaturan') }}</li>
 
             <li class="dropdown">
                 <a href="" class="nav-link has-dropdown">
                     <i class="fas fa-th-large"></i>
-                    <span>{{ __('Manage Account') }}</span>
+                    <span>{{ __('Kelola Akun') }}</span>
                 </a>
 
                 <ul class="dropdown-menu">
                     <li class="{{ Request::routeIs('permission.index') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('permission.index') }}">{{ __('Permission') }}</a>
+                        <a class="nav-link" href="{{ route('permission.index') }}">{{ __('Izin') }}</a>
                     </li>
                 </ul>
                     
                 <ul class="dropdown-menu">
                     <li class="{{ Request::routeIs('role.index') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('role.index') }}">{{ __('Role') }}</a>
+                        <a class="nav-link" href="{{ route('role.index') }}">{{ __('Peran') }}</a>
                     </li>
                 </ul>
 
                 <ul class="dropdown-menu">
                     <li class="{{ Request::routeIs('user.index') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('user.index') }}">{{ __('User') }}</a>
+                        <a class="nav-link" href="{{ route('user.index') }}">{{ __('Pengguna') }}</a>
                     </li>
                 </ul>
             </li>

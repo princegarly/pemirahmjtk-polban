@@ -54,6 +54,10 @@
     </div>
 @endsection
 
+@section('modal')
+    
+@endsection
+
 @push('scripts')
     
 @endpush

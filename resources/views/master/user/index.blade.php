@@ -6,9 +6,9 @@
 
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
-        <li class="breadcrumb-item">{{ __('Settings') }}</li>
-        <li class="breadcrumb-item">{{ __('Manage Account') }}</li>
-        <li class="breadcrumb-item">{{ __('User') }}</li>
+        <li class="breadcrumb-item">{{ __('Pengaturan') }}</li>
+        <li class="breadcrumb-item">{{ __('Kelola Akun') }}</li>
+        <li class="breadcrumb-item">{{ __('Pengguna') }}</li>
         <li class="breadcrumb-item">
             <a href="{{ route('user.index') }}">{{ __('Data') }}</a>
         </li>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col">
                         <a href="{{ route('user.create') }}" class="btn btn-primary float-right mr-2">
-                            <span class="fas fa-plus"></span> {{ __('Create') }}
+                            <span class="fas fa-plus"></span> {{ __('Tambah') }}
                         </a>
                     </div>
                 </div>
@@ -36,11 +36,13 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">{{ __('No') }}</th>
-                                    <th class="text-center">{{ __('Full Name') }}</th>
+                                    <th class="text-center">{{ __('Nama Lengkap') }}</th>
+                                    <th class="text-center">{{ __('Program Studi') }}</th>
+                                    <th class="text-center">{{ __('Kelas') }}</th>
                                     <th class="text-center">{{ __('Email') }}</th>
-                                    <th class="text-center">{{ __('Gender') }}</th>
-                                    <th class="text-center">{{ __('Role') }}</th>
-                                    <th class="text-center">{{ __('Action') }}</th>
+                                    <th class="text-center">{{ __('Jenis Kelamin') }}</th>
+                                    <th class="text-center">{{ __('Peran') }}</th>
+                                    <th class="text-center">{{ __('Aksi') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,6 +72,8 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                 }, width: '5%', class: 'text-center' },
                 { data: 'name', name: 'name' },
+                { data: 'grade_name', name: 'grade_name', class: 'text-center' },
+                { data: 'study_program_name', name: 'study_program_name', class: 'text-center' },
                 { data: 'email', name: 'email', class: 'text-center' },
                 { data: 'gender', name: 'gender', class: 'text-center' },
                 { data: 'roles', name: 'roles', class: 'text-center' },

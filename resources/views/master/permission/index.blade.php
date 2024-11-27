@@ -6,9 +6,9 @@
 
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
-        <li class="breadcrumb-item">{{ __('Settings') }}</li>
-        <li class="breadcrumb-item">{{ __('Manage Account') }}</li>
-        <li class="breadcrumb-item">{{ __('Permission') }}</li>
+        <li class="breadcrumb-item">{{ __('Pengaturan') }}</li>
+        <li class="breadcrumb-item">{{ __('Kelola Akun') }}</li>
+        <li class="breadcrumb-item">{{ __('Izin') }}</li>
         <li class="breadcrumb-item">
             <a href="{{ route('permission.index') }}">{{ __('Data') }}</a>
         </li>
@@ -34,9 +34,9 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">{{ __('No') }}</th>
-                                    <th class="text-center">{{ __('Permission Name') }}</th>
-                                    <th class="text-center">{{ __('Guard Name') }}</th>
-                                    <th class="text-center">{{ __('Total Role') }}</th>
+                                    <th class="text-center">{{ __('Nama Izin') }}</th>
+                                    <th class="text-center">{{ __('Nama Penjaga') }}</th>
+                                    <th class="text-center">{{ __('Jumlah Peran') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -50,6 +50,10 @@
     </div>
 @endsection
 
+@section('modal')
+    
+@endsection
+
 @push('scripts')
     <script>
         var datatable = $('#crudStudyProgram').DataTable({

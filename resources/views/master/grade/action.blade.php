@@ -1,4 +1,3 @@
-
 <div class="d-flex">
     <a href="{{ route('grade.edit', Crypt::encrypt($id)) }}" class="ml-2 btn btn-warning">
         <span class="fas fa-edit"></span>

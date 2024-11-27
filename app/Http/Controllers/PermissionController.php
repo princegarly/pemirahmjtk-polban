@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission;
-use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Log;
-use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
 class PermissionController extends Controller
 {
     public function index()
     {
-        $title = "Permission - Data";
+        $title = "Izin - Data";
 
         return view('master.permission.index', compact('title'));
     }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\Role;
+use App\Models\StudyProgram;
 use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
@@ -16,10 +18,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $title = "User - Data";
+        $title = "Pengguna - Data";
 
-        $confTitle = 'Delete Subject Data!';
-        $confText = "Are you sure you want to delete?";
+        $confTitle = 'Hapus Data Subjek!';
+        $confText = "Apakah Anda yakin ingin menghapus?";
 
         confirmDelete($confTitle, $confText);
 
@@ -28,20 +30,32 @@ class UserController extends Controller
 
     public function create()
     {
-        $title = "User - Create";
+        $title = "Pengguna - Tambah";
+        $studyPrograms = StudyProgram::all();
+        $grades = Grade::all();
         $roles = Role::get();
 
-        return view('master.user.create', compact('title', 'roles'));
+        return view('master.user.create', compact('title', 'studyPrograms', 'grades', 'roles'));
     }
 
     public function store(Request $request)
     {
         try {
+            $studyProgram = StudyProgram::where('name', $request->studyProgram)->get()->first();
+            $grade = Grade::where('name', $request->grade)->get()->first();
+
             $gender = $request->gender == 'male' ? true : false;
 
             $user = User::create([
+                'study_program_id' => $studyProgram->id,
+                'grade_id' => $grade->id,
+                'nim' => $request->nim,
                 'name' => $request->name,
                 'gender' => $gender,
+                'year_group' => $request->yearGroup,
+                'start_time' => $request->startTime,
+                'end_time' => $request->endTime,
+                'election_status' => false,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
@@ -50,12 +64,12 @@ class UserController extends Controller
                 $user->assignRole($request->role);
             }
 
-            Alert::success('Congrats', 'You\'ve Successfully Created');
+            Alert::success('Selamat', 'Anda telah berhasil menambahkan data');
             return redirect()->route('user.index');
         } catch (\Exception $excep) {
-            Log::error('Error Adding User: ' . $excep->getMessage());
+            Log::error('Kesalahan Menambahkan Pengguna: ' . $excep->getMessage());
         
-            Alert::error('Error', 'An error occurred while adding the user.');
+            Alert::error('Error', 'Terjadi kesalahan saat menambahkan Pengguna.');
             return redirect()->back()->withInput();
         }
     }
@@ -68,14 +82,14 @@ class UserController extends Controller
     public function edit(string $id)
     {
         try {
-            $title = "User - Edit";
+            $title = "Pengguna - Edit";
 
             $userId = Crypt::decrypt($id);
             $data = User::find($userId);
 
             return view('master.user.edit', compact('title', 'data'));
         } catch (DecryptException $decryptExcep) {
-            Alert::error('Error', 'Invalid Decryption Key or Ciphertext.');
+            Alert::error('Error', 'Kunci Dekripsi atau Ciphertext tidak valid.');
             return redirect()->route('user.index');
         }
     }
@@ -98,15 +112,15 @@ class UserController extends Controller
                 $user->syncRoles($request->role);
             }
 
-            Alert::success('Congrats', 'You\'ve Successfully Updated');
+            Alert::success('Selamat', 'Anda telah berhasil memperbarui data');
             return redirect()->route('user.index');
         } catch (DecryptException $decryptExcep) {
-            Alert::error('Error', 'Invalid Decryption Key or Ciphertext.');
+            Alert::error('Error', 'Kunci Dekripsi atau Ciphertext tidak valid.');
             return redirect()->route('user.index');
         } catch (\Exception $excep) {
-            Log::error('Error Updating User: ' . $excep->getMessage());
+            Log::error('Kesalahan Memperbarui Pengguna: ' . $excep->getMessage());
         
-            Alert::error('Error', 'An error occurred while updating the user.');
+            Alert::error('Error', 'Terjadi kesalahan saat memperbarui Pengguna.');
             return redirect()->back()->withInput();
         }
     }
@@ -117,18 +131,21 @@ class UserController extends Controller
             $userId = Crypt::decrypt($id);
             User::findOrFail($userId)->delete();
 
-            Alert::success('Congrats', 'You\'ve Successfully Deleted');
+            Alert::success('Selamat', 'Anda telah berhasil menghapus data');
             return redirect()->route('user.index');
         } catch (DecryptException $decryptExcep) {
-            Alert::error('Error', 'Invalid Decryption Key or Ciphertext.');
+            Alert::error('Error', 'Kunci Dekripsi atau Ciphertext tidak valid.');
             return redirect()->route('user.index');
         }
     }
 
     public function data()
     {
-        $data = User::with('roles')
-                    ->orderBy('name', 'asc')
+        $data = User::with(['roles'])
+                    ->select('users.*', 'grades.name as grade_name', 'study_programs.name as study_program_name')
+                    ->join('grades', 'users.grade_id', '=', 'grades.id')
+                    ->join('study_programs', 'users.study_program_id', '=', 'study_programs.id')
+                    ->orderBy('users.name', 'asc')
                     ->get();
 
         return DataTables::of($data)
@@ -137,7 +154,7 @@ class UserController extends Controller
                             return ucwords($item->roles->pluck('name')->implode(', '));
                         })
                         ->editColumn('gender', function ($item) {
-                            return $item->gender ? 'Male' : 'Female';
+                            return $item->gender ? 'Laki-laki' : 'Perempuan';
                         })
                         ->addColumn('action', 'master.user.action')
                         ->rawColumns(['action'])

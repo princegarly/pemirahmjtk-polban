@@ -6,9 +6,9 @@
 
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
-        <li class="breadcrumb-item">{{ __('Settings') }}</li>
-        <li class="breadcrumb-item">{{ __('Manage Account') }}</li>
-        <li class="breadcrumb-item">{{ __('Role') }}</li>
+        <li class="breadcrumb-item">{{ __('Pengaturan') }}</li>
+        <li class="breadcrumb-item">{{ __('Kelola Akun') }}</li>
+        <li class="breadcrumb-item">{{ __('Peran') }}</li>
         <li class="breadcrumb-item">
             <a href="{{ route('role.index') }}">{{ __('Data') }}</a>
         </li>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col">
                         <a href="{{ route('role.create') }}" class="btn btn-primary float-right mr-2">
-                            <span class="fas fa-plus"></span> {{ __('Create') }}
+                            <span class="fas fa-plus"></span> {{ __('Tambah') }}
                         </a>
                     </div>
                 </div>
@@ -36,11 +36,11 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">{{ __('No') }}</th>
-                                    <th class="text-center">{{ __('Role Name') }}</th>
-                                    <th class="text-center">{{ __('Guard Name') }}</th>
-                                    <th class="text-center">{{ __('Total User') }}</th>
-                                    <th class="text-center">{{ __('Total Permission') }}</th>
-                                    <th class="text-center">{{ __('Action') }}</th>
+                                    <th class="text-center">{{ __('Nama Peran') }}</th>
+                                    <th class="text-center">{{ __('Nama Penjaga') }}</th>
+                                    <th class="text-center">{{ __('Jumlah Pengguna') }}</th>
+                                    <th class="text-center">{{ __('Jumlah Izin') }}</th>
+                                    <th class="text-center">{{ __('Aksi') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
