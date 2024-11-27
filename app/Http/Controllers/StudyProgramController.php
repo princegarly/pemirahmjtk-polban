@@ -78,7 +78,7 @@ class StudyProgramController extends Controller
                 'name' => $request->name
             ]);
     
-            Alert::success('Congrats', 'You\'ve Successfully Updated');
+            Alert::success('Selamat', 'Anda telah berhasil memperbarui data');
             return redirect()->route('study-program.index');
         } catch (DecryptException $decryptExcep) {
             Alert::error('Error', 'Kunci Dekripsi atau Ciphertext tidak valid.');
