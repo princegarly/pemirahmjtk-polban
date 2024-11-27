@@ -29,7 +29,7 @@
             @can(['study-program-read'])
                 <li class="{{ Request::routeIs('study-program.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('study-program.index') }}">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-hourglass-half"></i>
                         <span>{{ __('Program Studi') }}</span>
                     </a>
                 </li>
@@ -38,7 +38,7 @@
             @can(['grade-read'])
                 <li class="{{ Request::routeIs('grade.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('grade.index') }}">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-landmark"></i>
                         <span>{{ __('Kelas') }}</span>
                     </a>
                 </li>
@@ -47,7 +47,7 @@
             @can(['candidate-read'])
                 <li class="{{ Request::routeIs('candidate.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('candidate.index') }}">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-users-cog"></i>
                         <span>{{ __('Kandidat') }}</span>
                     </a>
                 </li>
@@ -60,7 +60,7 @@
             @can(['polling-booth'])
                 <li class="{{ Request::routeIs('polling-booth.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('polling-booth.index') }}">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-box"></i>
                         <span>{{ __('Surat Suara') }}</span>
                     </a>
                 </li>
@@ -73,7 +73,7 @@
             @can(['election-status-already'])
                 <li class="{{ Request::routeIs('election-status.already.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('election-status.already.index') }}">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-book"></i>
                         <span>{{ __('Sudah Memilih') }}</span>
                     </a>
                 </li>
@@ -82,7 +82,7 @@
             @can(['election-status-not-yet'])
                 <li class="{{ Request::routeIs('election-status.notyet.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('election-status.notyet.index') }}">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-book-reader"></i>
                         <span>{{ __('Belum Memilih') }}</span>
                     </a>
                 </li>
