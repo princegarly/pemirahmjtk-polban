@@ -1,6 +1,6 @@
-@canany(['role-edit', 'role-delete'])
+@canany(['role-update', 'role-delete'])
     <div class="d-flex">
-        @canany(['user-edit'])
+        @canany(['user-update'])
             <a href="{{ route('user.edit', Crypt::encrypt($id)) }}" class="ml-2 btn btn-warning">
                 <span class="fas fa-edit"></span>
             </a>
