@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ElectionStatusController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PollingBoothController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudyProgramController;
@@ -97,6 +98,11 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], f
         Route::put('/update/{id}', [CandidateController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [CandidateController::class, 'destroy'])->name('destroy');
         Route::get('/data', [CandidateController::class, 'data'])->name('data');
+    });
+
+    Route::name('polling-booth.')->prefix('polling-booth')->group(function () {
+        Route::get('/', [PollingBoothController::class, 'index'])->name('index');
+        Route::delete('/{id}/edit', [PollingBoothController::class, 'edit'])->name('edit');
     });
 });
 

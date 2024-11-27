@@ -43,6 +43,15 @@
                 </a>
             </li>
 
+            <li class="menu-header">{{ __('Bilik Suara') }}</li>
+            
+            <li class="{{ Request::routeIs('polling-booth.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('polling-booth.index') }}">
+                    <i class="fas fa-fire"></i>
+                    <span>{{ __('Surat Suara') }}</span>
+                </a>
+            </li>
+
             <li class="menu-header">{{ __('Status Pemilihan') }}</li>
             
             <li class="{{ Request::routeIs('election-status.already.index') ? 'active' : '' }}">
