@@ -88,6 +88,19 @@
                 </li>
             @endcan
 
+            @canany(['result'])
+                <li class="menu-header">{{ __('Hasil') }}</li>
+            @endcanany
+            
+            @can(['result'])
+                <li class="{{ Request::routeIs('result.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('result.index') }}">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>{{ __('Quick Count') }}</span>
+                    </a>
+                </li>
+            @endcan
+
             @canany(['permission-read', 'role-read', 'user-read'])
                 <li class="menu-header">{{ __('Pengaturan') }}</li>
             @endcanany

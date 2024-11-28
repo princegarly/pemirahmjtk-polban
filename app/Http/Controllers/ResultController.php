@@ -5,31 +5,43 @@ namespace App\Http\Controllers;
 use App\Models\Candidate;
 use App\Models\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ResultController extends Controller
 {
     public function index()
     {
-        $candidate = Candidate::get();
-        $result = Result::with("user", "candidate")->GroupBy('results.candidate_id')->get();
+        $Candidate = Candidate::get();
 
-        foreach ($result as $value) {
-            $candidates = Candidate::where("id", $value->candidate_id)->get();
-            foreach ($candidates as $key) {
-                $Data['label'][] = $key->name;
-                
+        // Fix the query to group by candidate_id and count results per candidate
+        $Result = Result::select('candidate_id', DB::raw('COUNT(*) as count'))
+            ->groupBy('candidate_id')
+            ->with('user', 'candidate')
+            ->get();
+
+        $Data = []; // Initialize the Data array to store results
+
+        foreach ($Result as $Value) {
+            // Find the candidate by id
+            $Candidates = Candidate::where("id", $Value->candidate_id)->get();
+            
+            foreach ($Candidates as $key) {
+                // Store candidate name in the 'Label' array
+                $Data['Label'][] = $key->name;
             }
-            $dataCount = Result::where("candidate_id", $value->candidate->id)->count();
 
-            $data['data'][] =  (int) $dataCount;
-
-            if($data != null) {
-                $this->result = json_encode($data);
-                $result = $this->result;
-            }
+            // Store the count of results for this candidate
+            $Data['data'][] = (int) $Value->count;
         }
 
-        return view('master.result.index', compact('result'));
+        // Check if $Data is not empty and encode to JSON
+        if (!empty($Data)) {
+            $this->Result = json_encode($Data);
+            $Result = $this->Result;
+        }
+
+        // Return the view with the result data
+        return view('master.result.index', compact('Result'));
     }
 
     public function create()
