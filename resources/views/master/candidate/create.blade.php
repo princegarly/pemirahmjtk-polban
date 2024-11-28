@@ -51,21 +51,21 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label font-weight-bold">{{ __('Visi dan Misi*') }}</label>
                             <div class="col-sm-9">
-                                <input type="file" value="{{ old('vision_and_mission') }}" id="vision_and_mission" name="vision_and_mission" class="form-control dropify">
+                                <input type="text" value="{{ old('vision_and_mission') }}" id="vision_and_mission" name="vision_and_mission" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label font-weight-bold">{{ __('Curriculum Vitae*') }}</label>
                             <div class="col-sm-9">
-                                <input type="file" value="{{ old('curriculum_vitae') }}" id="curriculum_vitae" name="curriculum_vitae" class="form-control dropify">
+                                <input type="text" value="{{ old('curriculum_vitae') }}" id="curriculum_vitae" name="curriculum_vitae" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label font-weight-bold">{{ __('Grand Design*') }}</label>
                             <div class="col-sm-9">
-                                <input type="file" value="{{ old('grand_design') }}" id="grand_design" name="grand_design" class="form-control dropify">
+                                <input type="text" value="{{ old('grand_design') }}" id="grand_design" name="grand_design" class="form-control">
                             </div>
                         </div>
                     </div>

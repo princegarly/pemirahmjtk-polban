@@ -79,9 +79,9 @@
                                 </div>
                             </div>
 
-                            <a href="{{ Storage::url($candidate->vision_and_mission) }}" class="mt-2 btn btn-primary btn-lg btn-block">Visi Misi <i class="fas fa-arrow-right"></i></a>
-                            <a href="{{ Storage::url($candidate->curriculum_vitae) }}" class="mt-2 btn btn-primary btn-lg btn-block">Curriculum Vitae <i class="fas fa-arrow-right"></i></a>
-                            <a href="{{ Storage::url($candidate->grand_design) }}" class="mt-2 btn btn-primary btn-lg btn-block">Grand Design <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ $candidate->vision_and_mission }}" target="_blank" class="mt-2 btn btn-primary btn-lg btn-block">Visi Misi <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ $candidate->curriculum_vitae }}" target="_blank" class="mt-2 btn btn-primary btn-lg btn-block">Curriculum Vitae <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ $candidate->grand_design }}" target="_blank" class="mt-2 btn btn-primary btn-lg btn-block">Grand Design <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
