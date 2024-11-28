@@ -35,33 +35,18 @@ class CandidateController extends Controller
     {
         try {
             $photo = $request->file('photo');
-            $visionAndMission = $request->file('vision_and_mission');
-            $curriculumVitae = $request->file('curriculum_vitae');
-            $grandDesign = $request->file('grand_design');
 
             if ($request->hasFile('photo')) {
                 $tempPhoto = $photo->store('public/images/candidate/photo');
 
-                if ($request->hasFile('vision_and_mission')) {
-                    $tempVisionAndMission = $visionAndMission->store('public/document/candidate/vision_and_mission');
-    
-                    if ($request->hasFile('curriculum_vitae')) {
-                        $tempCurriculumVitae = $curriculumVitae->store('public/document/candidate/curriculum_vitae');
-        
-                        if ($request->hasFile('grand_design')) {
-                            $tempGrandDesign = $grandDesign->store('public/document/candidate/grand_design');
-            
-                            Candidate::create([
-                                'sequence_number' => $request->sequence_number,
-                                'name' => $request->name,
-                                'photo' => $tempPhoto,
-                                'vision_and_mission' => $tempVisionAndMission,
-                                'curriculum_vitae' => $tempCurriculumVitae,
-                                'grand_design' => $tempGrandDesign
-                            ]);
-                        }
-                    }
-                }
+                Candidate::create([
+                    'sequence_number' => $request->sequence_number,
+                    'name' => $request->name,
+                    'photo' => $tempPhoto,
+                    'vision_and_mission' => $request->vision_and_mission,
+                    'curriculum_vitae' => $request->curriculum_vitae,
+                    'grand_design' => $request->grand_design
+                ]);
             }
 
             Alert::success('Selamat', 'Anda telah berhasil menambahkan data');
